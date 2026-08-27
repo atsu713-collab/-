@@ -41,17 +41,17 @@ TPL = """<meta charset="utf-8">
     line-height:2.0; letter-spacing:0.05em; text-align:center; white-space:pre-wrap; }}
   .term {{ margin-top:64px; color:#9B7F68; font-size:32px; letter-spacing:0.12em;
     font-weight:700; background:#E8DDD1; border-radius:999px; padding:18px 42px; }}
-  .page {{ position:absolute; bottom:70px; right:76px; line-height:1.6;
-    color:%s; font-size:34px; font-weight:500; letter-spacing:0.16em; }}
-  .swipe {{ position:absolute; bottom:70px; left:0; right:0; line-height:1.6;
-    text-align:center; color:%s; font-size:34px; font-weight:500; letter-spacing:0.2em; {swipe_display} }}
+  .page {{ position:absolute; bottom:84px; right:88px; line-height:1.4;
+    color:#4A4038; font-size:44px; font-weight:700; letter-spacing:0.10em; }}
+  .swipe {{ position:absolute; bottom:88px; left:0; right:0; line-height:1.4;
+    text-align:center; color:#5F554C; font-size:36px; font-weight:500; letter-spacing:0.18em; {swipe_display} }}
 </style>
 <div class="rule"></div>
 <div class="text">{body}</div>
 {term_html}
 <div class="swipe">→ スワイプ</div>
 <div class="page">{page} / 7</div>
-""" % (BG, ACCENT, INK, SUB, SUB)
+""" % (BG, ACCENT, INK)
 
 for key, slides in POSTS.items():
     d = f"{SP}/{key}"
