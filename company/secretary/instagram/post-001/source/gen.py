@@ -32,7 +32,7 @@ TPL = """<meta charset="utf-8">
     {rule_display}
   }}
   .text {{
-    color:#33302B;
+    color:#2E4033;
     font-size:{size}px;
     font-weight:{weight};
     line-height:1.95;
@@ -51,14 +51,14 @@ TPL = """<meta charset="utf-8">
     padding:16px 40px;
   }}
   .page {{
-    position:absolute; bottom:64px; right:80px;
-    color:#A9A296; font-size:26px; letter-spacing:0.16em;
+    position:absolute; bottom:72px; right:80px;
+    color:#7E8C7C; font-size:32px; letter-spacing:0.18em; line-height:1.6;
     font-family:'Noto Serif JP', serif;
   }}
   .swipe {{
-    position:absolute; bottom:62px; left:0; right:0;
-    text-align:center; color:#A9A296;
-    font-size:28px; letter-spacing:0.2em;
+    position:absolute; bottom:72px; left:0; right:0;
+    text-align:center; color:#7E8C7C;
+    font-size:32px; letter-spacing:0.22em; line-height:1.6;
     {swipe_display}
   }}
 </style>
@@ -70,8 +70,8 @@ TPL = """<meta charset="utf-8">
 """
 
 for i, (body, size, term, kind) in enumerate(slides, start=1):
-    bg = "#F4F1EA"
-    accent = "#7A8B7F"
+    bg = "#E7EDE4"
+    accent = "#7D9B80"
     weight = 600 if kind in ("hook", "close") else 400
     rule_display = "" if kind in ("hook", "close") else "display:none;"
     swipe_display = "" if i == 1 else "display:none;"
