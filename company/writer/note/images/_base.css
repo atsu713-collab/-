@@ -1,0 +1,9 @@
+html,body{height:100%;width:100%}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'IPAGothic','IPAPGothic',sans-serif;background:#FBF6F0;color:#3E3A36;-webkit-font-smoothing:antialiased}
+.wrap{width:1280px;padding:70px 80px;display:flex;flex-direction:column;justify-content:center}
+.kicker{font-size:26px;color:#B07A5B;letter-spacing:.08em;margin-bottom:26px}
+h1{font-size:62px;line-height:1.45;font-weight:700;letter-spacing:.01em}
+h2{font-size:44px;line-height:1.5;font-weight:700;margin-bottom:34px}
+.sub{font-size:28px;line-height:1.8;color:#6B635C;margin-top:34px}
+.rule{width:96px;height:6px;background:#E0A87E;border-radius:3px;margin:34px 0}
