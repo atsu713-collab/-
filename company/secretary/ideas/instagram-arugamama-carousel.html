@@ -4,104 +4,60 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
 <style>
   :root {
-    --ground: #F2F4F0;
-    --surface: #FFFFFF;
-    --line: #D8DED4;
-    --ink: #22271F;
-    --ink-soft: #5C6659;
-    --accent: #2F5D4A;
-    --accent-soft: #7FA08C;
-    --chip: #E4EADF;
+    --ground: #F2F4F0; --surface: #FFFFFF; --line: #D8DED4;
+    --ink: #22271F; --ink-soft: #5C6659; --accent: #2F5D4A;
+    --accent-soft: #7FA08C; --chip: #E4EADF;
 
     /* 画像そのものの色。テーマで変えない（実際の投稿画像の見た目） */
-    --art-bg: #EEF1EC;
-    --art-ink: #22271F;
-    --art-accent: #2F5D4A;
-    --art-sub: #7FA08C;
-    --art-tint: #DDE4DA;
+    --art-bg: #EEF1EC; --art-ink: #22271F; --art-accent: #2F5D4A;
+    --art-sub: #7FA08C; --art-tint: #DDE4DA; --art-white: #FBFCFA;
 
     --mincho: "Zen Old Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
     --gothic: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", sans-serif;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --ground: #161A15;
-      --surface: #1E231C;
-      --line: #313829;
-      --ink: #E6EBE3;
-      --ink-soft: #A3AE9C;
-      --accent: #86B79B;
-      --accent-soft: #6C8B79;
-      --chip: #2A3127;
+      --ground: #161A15; --surface: #1E231C; --line: #313829;
+      --ink: #E6EBE3; --ink-soft: #A3AE9C; --accent: #86B79B;
+      --accent-soft: #6C8B79; --chip: #2A3127;
     }
   }
   :root[data-theme="dark"] {
-    --ground: #161A15;
-    --surface: #1E231C;
-    --line: #313829;
-    --ink: #E6EBE3;
-    --ink-soft: #A3AE9C;
-    --accent: #86B79B;
-    --accent-soft: #6C8B79;
-    --chip: #2A3127;
+    --ground: #161A15; --surface: #1E231C; --line: #313829;
+    --ink: #E6EBE3; --ink-soft: #A3AE9C; --accent: #86B79B;
+    --accent-soft: #6C8B79; --chip: #2A3127;
   }
 
-  body {
-    background: var(--ground);
-    color: var(--ink);
-    font-family: var(--gothic);
-    line-height: 1.9;
-    -webkit-font-smoothing: antialiased;
-  }
+  body { background: var(--ground); color: var(--ink); font-family: var(--gothic); line-height: 1.9; -webkit-font-smoothing: antialiased; }
   .wrap { max-width: 1040px; margin: 0 auto; padding: 56px 24px 96px; }
   section { margin-top: 72px; }
 
-  .eyebrow {
-    font-size: 12px; letter-spacing: .22em; color: var(--accent);
-    font-weight: 700; margin: 0 0 14px;
-  }
-  h1 {
-    font-family: var(--mincho); font-weight: 600;
-    font-size: clamp(30px, 6vw, 46px); line-height: 1.5; letter-spacing: .02em;
-    margin: 0 0 20px; text-wrap: balance;
-  }
-  h2 {
-    font-family: var(--mincho); font-weight: 600;
-    font-size: 22px; letter-spacing: .04em; margin: 0 0 6px;
-    padding-bottom: 12px; border-bottom: 1px solid var(--line);
-    display: flex; align-items: baseline; gap: 12px;
-  }
+  .eyebrow { font-size: 12px; letter-spacing: .22em; color: var(--accent); font-weight: 700; margin: 0 0 14px; }
+  h1 { font-family: var(--mincho); font-weight: 600; font-size: clamp(30px, 6vw, 46px); line-height: 1.5; letter-spacing: .02em; margin: 0 0 20px; text-wrap: balance; }
+  h2 { font-family: var(--mincho); font-weight: 600; font-size: 22px; letter-spacing: .04em; margin: 0 0 6px; padding-bottom: 12px; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 12px; }
   h2 .n { font-family: var(--gothic); font-size: 11px; letter-spacing: .18em; color: var(--accent-soft); font-weight: 700; }
   .lede { color: var(--ink-soft); font-size: 14px; max-width: 62ch; margin: 14px 0 0; }
+  .lede a { color: var(--accent); }
 
   .meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
-  .meta span {
-    background: var(--chip); color: var(--ink); border-radius: 999px;
-    padding: 6px 14px; font-size: 12.5px; letter-spacing: .03em;
-  }
+  .meta span { background: var(--chip); color: var(--ink); border-radius: 999px; padding: 6px 14px; font-size: 12.5px; letter-spacing: .03em; }
 
   /* ---- スライド ---- */
   .slides { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px 28px; margin-top: 32px; }
   @media (max-width: 720px) { .slides { grid-template-columns: 1fr; } }
-
   .slide { display: flex; flex-direction: column; gap: 12px; }
+  .slide.wide { grid-column: 1 / -1; }
+  .slide.wide .art, .slide.wide .note { max-width: 620px; width: 100%; margin-inline: auto; }
+
   .art {
-    container-type: inline-size;
-    aspect-ratio: 1 / 1;
+    container-type: inline-size; aspect-ratio: 1 / 1;
     background: var(--art-bg); color: var(--art-ink);
     border: 1px solid var(--line); border-radius: 2px;
     padding: 9cqw; display: flex; flex-direction: column;
     position: relative; overflow: hidden;
   }
-  .art .pg {
-    position: absolute; top: 6cqw; right: 7cqw;
-    font-family: var(--gothic); font-size: 2.6cqw; letter-spacing: .2em;
-    color: var(--art-sub); font-weight: 700;
-  }
-  .art .big {
-    font-family: var(--mincho); font-weight: 600;
-    font-size: 8.4cqw; line-height: 1.55; letter-spacing: .03em; margin: 0;
-  }
+  .art .pg { position: absolute; top: 6cqw; right: 7cqw; font-family: var(--gothic); font-size: 2.6cqw; letter-spacing: .2em; color: var(--art-sub); font-weight: 700; }
+  .art .big { font-family: var(--mincho); font-weight: 600; font-size: 8.4cqw; line-height: 1.55; letter-spacing: .03em; margin: 0; }
   .art .mid { font-family: var(--mincho); font-size: 6.2cqw; line-height: 1.75; margin: 0; }
   .art .body { font-family: var(--gothic); font-size: 4.4cqw; line-height: 2; margin: 0; }
   .art .small { font-family: var(--gothic); font-size: 3.5cqw; line-height: 1.9; color: var(--art-sub); margin: 0; }
@@ -114,36 +70,33 @@
   .art.invert { background: var(--art-accent); color: var(--art-bg); }
   .art.invert .pg, .art.invert .small { color: #A9C4B4; }
   .art.tint { background: var(--art-tint); }
-  .art .card {
-    background: var(--art-bg); border-left: 3px solid var(--art-accent);
-    padding: 5cqw; font-size: 3.8cqw; line-height: 1.9; color: var(--art-ink);
-  }
-  .art .tag {
-    display: inline-block; font-size: 2.8cqw; letter-spacing: .16em; font-weight: 700;
-    color: var(--art-accent); border: 1px solid var(--art-accent);
-    padding: .6cqw 2.4cqw; margin-bottom: 4cqw;
-  }
+  .art .tag { display: inline-block; font-size: 2.8cqw; letter-spacing: .16em; font-weight: 700; color: var(--art-accent); border: 1px solid var(--art-accent); padding: .6cqw 2.4cqw; margin-bottom: 4cqw; }
+
+  /* ---- 1枚目：4コマ ---- */
+  .art.komasheet { padding: 5cqw; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr 1fr; gap: 3cqw; }
+  .komasheet .head { grid-column: 1 / -1; display: flex; align-items: baseline; justify-content: space-between; gap: 2cqw; }
+  .komasheet .head b { font-family: var(--mincho); font-size: 4.6cqw; font-weight: 600; }
+  .komasheet .head span { font-family: var(--gothic); font-size: 2.4cqw; letter-spacing: .2em; color: var(--art-sub); font-weight: 700; }
+  .koma { background: var(--art-white); border: 1.5px solid var(--art-ink); position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; padding: 3cqw 2.5cqw 0; }
+  .koma .num { position: absolute; top: 1.6cqw; left: 2cqw; font-family: var(--gothic); font-size: 2.4cqw; font-weight: 700; color: var(--art-sub); }
+  .koma .when { position: absolute; top: 1.6cqw; right: 2cqw; font-family: var(--gothic); font-size: 2.2cqw; color: var(--art-sub); letter-spacing: .06em; }
+  .koma .bubble { background: var(--art-bg); border: 1.2px solid var(--art-ink); border-radius: 3cqw; padding: 1.6cqw 2.4cqw; font-family: var(--gothic); font-size: 2.5cqw; line-height: 1.6; text-align: center; margin-top: 3.4cqw; position: relative; max-width: 92%; }
+  .koma .bubble::after { content: ""; position: absolute; bottom: -1.5cqw; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 1.4cqw solid transparent; border-right: 1.4cqw solid transparent; border-top: 1.6cqw solid var(--art-ink); }
+  .koma .bubble::before { content: ""; position: absolute; bottom: -1.1cqw; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 1.2cqw solid transparent; border-right: 1.2cqw solid transparent; border-top: 1.4cqw solid var(--art-bg); z-index: 1; }
+  .koma .line { font-family: var(--gothic); font-size: 2.5cqw; line-height: 1.6; text-align: center; margin: 3cqw 0 0; }
+  .koma svg { width: 74%; margin-top: auto; display: block; }
+  .koma.final { background: var(--art-tint); }
 
   .note { display: flex; gap: 12px; align-items: baseline; font-size: 13px; color: var(--ink-soft); }
   .note b { font-family: var(--gothic); color: var(--accent); font-size: 11.5px; letter-spacing: .12em; white-space: nowrap; }
 
   /* ---- キャプション ---- */
   .cap { background: var(--surface); border: 1px solid var(--line); border-radius: 3px; margin-top: 24px; }
-  .cap header {
-    display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between;
-    padding: 14px 20px; border-bottom: 1px solid var(--line);
-  }
+  .cap header { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; padding: 14px 20px; border-bottom: 1px solid var(--line); }
   .cap h3 { margin: 0; font-family: var(--gothic); font-size: 14px; font-weight: 700; letter-spacing: .04em; }
   .cap .use { font-size: 12px; color: var(--accent); letter-spacing: .04em; }
-  .cap pre {
-    margin: 0; padding: 22px 24px; white-space: pre-wrap; word-break: break-word;
-    font-family: var(--gothic); font-size: 14px; line-height: 2.1; color: var(--ink);
-  }
-  button.copy {
-    font-family: var(--gothic); font-size: 12px; letter-spacing: .06em; cursor: pointer;
-    background: transparent; color: var(--accent); border: 1px solid var(--accent-soft);
-    border-radius: 999px; padding: 5px 14px;
-  }
+  .cap pre { margin: 0; padding: 22px 24px; white-space: pre-wrap; word-break: break-word; font-family: var(--gothic); font-size: 14px; line-height: 2.1; color: var(--ink); }
+  button.copy { font-family: var(--gothic); font-size: 12px; letter-spacing: .06em; cursor: pointer; background: transparent; color: var(--accent); border: 1px solid var(--accent-soft); border-radius: 999px; padding: 5px 14px; }
   button.copy:hover { background: var(--chip); }
   button.copy:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
@@ -151,14 +104,14 @@
   .tablewrap { overflow-x: auto; margin-top: 24px; border: 1px solid var(--line); border-radius: 3px; background: var(--surface); }
   table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 13.5px; }
   th, td { text-align: left; padding: 13px 18px; border-bottom: 1px solid var(--line); vertical-align: top; }
-  th { font-size: 11.5px; letter-spacing: .14em; color: var(--accent); font-weight: 700; }
+  thead th { font-size: 11.5px; letter-spacing: .14em; color: var(--accent); font-weight: 700; }
+  tbody th { font-size: 12.5px; color: var(--ink-soft); font-weight: 500; white-space: nowrap; }
   td:first-child { font-variant-numeric: tabular-nums; color: var(--ink-soft); white-space: nowrap; }
-  tr:last-child td { border-bottom: none; }
+  tr:last-child td, tr:last-child th { border-bottom: none; }
 
   /* ---- ハッシュタグ・仕様 ---- */
   .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
   .tags span { background: var(--chip); border-radius: 3px; padding: 5px 11px; font-size: 12.5px; }
-
   .spec { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 18px; margin-top: 26px; }
   .swatch { background: var(--surface); border: 1px solid var(--line); border-radius: 3px; padding: 16px; }
   .swatch .chipcolor { height: 46px; border-radius: 2px; border: 1px solid var(--line); margin-bottom: 12px; }
@@ -175,60 +128,121 @@
 </style>
 
 <div class="wrap">
-  <p class="eyebrow">INSTAGRAM ｜ カルーセル投稿案</p>
+  <p class="eyebrow">INSTAGRAM ｜ カルーセル投稿案（確定版）</p>
   <h1>あるがままのあなたでもっといける</h1>
-  <p class="lede">「変わらなきゃ」ではなく「今の自分のまま動く」。自己否定をスタート地点にしない、という一本の軸で8枚を構成しています。6枚目はあつこさんの言葉を反映済みです。</p>
+  <p class="lede">1枚目に4コマ、2枚目以降を言葉のスライドにした全6枚の構成です。漫画で足を止めてもらい、言葉で保存してもらう流れにしています。8枚版から2枚減ったぶん、作る手間も軽くなります。</p>
   <div class="meta">
-    <span>カルーセル 8枚</span>
+    <span>カルーセル 6枚</span>
     <span>1080 × 1080px</span>
+    <span>1枚目が4コマ</span>
     <span>投稿目安：平日 20:00〜22:00</span>
-    <span>ターゲット：がんばっているのに「まだ足りない」と感じている人</span>
   </div>
 
   <section>
-    <h2><span class="n">01</span>スライド構成</h2>
-    <p class="lede">左上から順に1枚目〜8枚目。各カードの下は、その枚が担う役割です。6枚目にあつこさんの言葉を反映しました。</p>
+    <h2><span class="n">01</span>投稿構成（全6枚）</h2>
+    <p class="lede">上から順に1枚目〜6枚目。各カードの下は、その枚が担う役割です。</p>
 
     <div class="slides">
-      <div class="slide">
-        <div class="art">
-          <span class="pg">01 / 08</span>
-          <div class="spacer"></div>
-          <p class="big">あるがままの<br>あなたで<br>もっといける</p>
-          <div class="rule"></div>
-          <p class="small">「変わらなきゃ」と思った時点で、<br>少し疲れています</p>
-          <div class="spacer"></div>
-        </div>
-        <p class="note"><b>表紙</b>テーマを言い切る。サブコピーで「自分のことだ」と思わせる</p>
-      </div>
+      <div class="slide wide">
+        <div class="art komasheet">
+          <div class="head">
+            <b>準備が終わらない</b>
+            <span>01 / 06</span>
+          </div>
 
-      <div class="slide">
-        <div class="art">
-          <span class="pg">02 / 08</span>
-          <div class="spacer"></div>
-          <p class="mid">もっと自信がついたら。<br>もっと実績ができたら。<br>もっとちゃんとした<br>自分になれたら。</p>
-          <div class="rule"></div>
-          <p class="body">——その“もっと”、<br>いつまで続きますか。</p>
-          <div class="spacer"></div>
+          <div class="koma">
+            <span class="num">①</span>
+            <p class="bubble">準備ができたら、<br>始めよう</p>
+            <svg viewBox="0 0 200 130" fill="none" stroke="#22271F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="机に向かってノートを開いている人">
+              <circle cx="72" cy="30" r="17"/>
+              <circle cx="66" cy="29" r="1.9" fill="#22271F" stroke="none"/>
+              <circle cx="79" cy="29" r="1.9" fill="#22271F" stroke="none"/>
+              <path d="M68 37 q4.5 3.5 9 0"/>
+              <path d="M72 47 v30"/>
+              <path d="M72 56 l-15 14 M72 56 l22 16"/>
+              <path d="M40 95 h130" stroke-width="3"/>
+              <path d="M96 95 l8 -13 h34 l-8 13 z" fill="#EEF1EC"/>
+              <path d="M112 86 h14 M110 90 h18"/>
+              <path d="M52 95 v22 M158 95 v22"/>
+            </svg>
+          </div>
+
+          <div class="koma">
+            <span class="num">②</span>
+            <span class="when">3か月後</span>
+            <p class="bubble">まだ足りない<br>気がする…</p>
+            <svg viewBox="0 0 200 130" fill="none" stroke="#22271F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="積み上がった本の山の横で困っている人">
+              <circle cx="62" cy="36" r="17"/>
+              <circle cx="56" cy="35" r="1.9" fill="#22271F" stroke="none"/>
+              <circle cx="69" cy="35" r="1.9" fill="#22271F" stroke="none"/>
+              <path d="M56 44 q6 -3.5 12 0"/>
+              <path d="M62 53 v28"/>
+              <path d="M62 60 l-14 12 M62 60 l14 12"/>
+              <path d="M62 81 l-10 22 M62 81 l10 22"/>
+              <rect x="112" y="88" width="62" height="15" rx="2" fill="#EEF1EC"/>
+              <rect x="118" y="73" width="52" height="15" rx="2" fill="#EEF1EC"/>
+              <rect x="114" y="58" width="58" height="15" rx="2" fill="#EEF1EC"/>
+              <rect x="120" y="43" width="46" height="15" rx="2" fill="#EEF1EC"/>
+              <rect x="116" y="28" width="52" height="15" rx="2" fill="#EEF1EC"/>
+              <path d="M104 103 h78" stroke-width="3"/>
+            </svg>
+          </div>
+
+          <div class="koma">
+            <span class="num">③</span>
+            <p class="bubble">え、あの人<br>もう始めてる…！</p>
+            <svg viewBox="0 0 200 130" fill="none" stroke="#22271F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="スマホを見て驚いている人">
+              <path d="M118 22 l9 -11 M132 26 l13 -7" stroke="#2F5D4A"/>
+              <circle cx="96" cy="42" r="18"/>
+              <circle cx="89" cy="41" r="2.4" fill="#22271F" stroke="none"/>
+              <circle cx="103" cy="41" r="2.4" fill="#22271F" stroke="none"/>
+              <ellipse cx="96" cy="50" rx="4.5" ry="3.6"/>
+              <path d="M118 34 q5 7 0 13" stroke="#7FA08C"/>
+              <path d="M96 60 v26"/>
+              <path d="M96 66 l-16 10 M96 66 l16 10"/>
+              <path d="M96 86 l-11 20 M96 86 l11 20"/>
+              <rect x="104" y="70" width="17" height="27" rx="3" fill="#EEF1EC"/>
+              <path d="M108 77 h9 M108 82 h9 M108 87 h5"/>
+            </svg>
+          </div>
+
+          <div class="koma final">
+            <span class="num">④</span>
+            <p class="line">完璧に準備できている日は、<br>来なかった。<br><em>まず、やってみていい。</em></p>
+            <svg viewBox="0 0 200 130" fill="none" stroke="#22271F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="本の山に背を向けて一歩踏み出す人">
+              <rect x="18" y="88" width="46" height="13" rx="2" fill="#EEF1EC"/>
+              <rect x="22" y="75" width="38" height="13" rx="2" fill="#EEF1EC"/>
+              <rect x="20" y="62" width="42" height="13" rx="2" fill="#EEF1EC"/>
+              <circle cx="118" cy="40" r="17"/>
+              <circle cx="112" cy="39" r="1.9" fill="#22271F" stroke="none"/>
+              <circle cx="125" cy="39" r="1.9" fill="#22271F" stroke="none"/>
+              <path d="M113 46 q5.5 4.5 11 0"/>
+              <path d="M118 57 v26"/>
+              <path d="M118 63 l-15 -9 M118 63 l16 12"/>
+              <path d="M118 83 l-14 18 M118 83 l16 18"/>
+              <path d="M150 30 v10 M156 36 h-12" stroke="#2F5D4A"/>
+              <path d="M10 101 h180" stroke-width="3"/>
+            </svg>
+          </div>
         </div>
-        <p class="note"><b>共感</b>読み手の頭の中の言葉をそのまま置く</p>
+        <p class="note"><b>1枚目・4コマ</b>フックと共感と体験を、この1枚で兼ねています</p>
       </div>
 
       <div class="slide">
         <div class="art tint">
-          <span class="pg">03 / 08</span>
+          <span class="pg">02 / 06</span>
           <div class="spacer"></div>
           <p class="mid">準備が足りないんじゃない。</p>
           <div class="rule"></div>
           <p class="body">「今の自分ではダメ」<br>という前提が、<br>動きを止めています。</p>
           <div class="spacer"></div>
         </div>
-        <p class="note"><b>問題提起</b>原因を“能力”から“前提”にずらす</p>
+        <p class="note"><b>問題提起</b>漫画の“あるある”に、理由をつける</p>
       </div>
 
       <div class="slide">
         <div class="art">
-          <span class="pg">04 / 08</span>
+          <span class="pg">03 / 06</span>
           <div class="spacer"></div>
           <p class="body">うまくいった人は、<br>別人になったわけじゃない。</p>
           <div class="rule"></div>
@@ -240,7 +254,7 @@
 
       <div class="slide">
         <div class="art">
-          <span class="pg">05 / 08</span>
+          <span class="pg">04 / 06</span>
           <span class="tag">たとえば</span>
           <ul>
             <li>完璧な言葉じゃなくていい<br>→ 伝わればいい</li>
@@ -254,18 +268,7 @@
 
       <div class="slide">
         <div class="art">
-          <span class="pg">06 / 08</span>
-          <span class="tag">わたしの場合</span>
-          <p class="body">新しいことを始めるとき、</p>
-          <div class="card">準備が終わるのを<br>待っていました。<br><br>でも、完璧に準備できている日は<br>来ませんでした。<br><br>まず、やってみていい。</div>
-          <div class="spacer"></div>
-        </div>
-        <p class="note"><b>体験</b>「待っていた過去」→「まずやってみていい」の順につないでいます</p>
-      </div>
-
-      <div class="slide">
-        <div class="art">
-          <span class="pg">07 / 08</span>
+          <span class="pg">05 / 06</span>
           <div class="spacer"></div>
           <p class="mid">削るんじゃなくて、活かす。<br>直すんじゃなくて、使う。</p>
           <div class="rule"></div>
@@ -277,7 +280,7 @@
 
       <div class="slide">
         <div class="art invert">
-          <span class="pg">08 / 08</span>
+          <span class="pg">06 / 06</span>
           <div class="spacer"></div>
           <p class="big">自分を変えなくていい。<br>使い方を変えるだけ。</p>
           <div class="spacer"></div>
@@ -289,65 +292,50 @@
   </section>
 
   <section>
-    <h2><span class="n">02</span>6枚目の文言案</h2>
-    <p class="lede">「新しいことを始めるとき、完璧に準備できていなくても、まずやってみていい」——あつこさんの言葉を軸に3案。A案をスライドに反映しています。差し替える場合はB案・C案からどうぞ。<br>どの案も、準備が足りない自分を責める書き方は避けて、「待たなくていい」という言い方に寄せています。</p>
-
-    <div class="cap">
-      <header><h3>A案・反映済み</h3><span class="use">短くて、スライドに一番おさまりがいい</span></header>
-      <pre>新しいことを始めるとき、
-
-準備が終わるのを待っていました。
-
-でも、完璧に準備できている日は来ませんでした。
-
-まず、やってみていい。</pre>
-    </div>
-
-    <div class="cap">
-      <header><h3>B案・言い訳を先回りする</h3><span class="use">「まだ早い」で止まっている人に効く</span></header>
-      <pre>「まだ早い」と思っているうちは、
-ずっと始められませんでした。
-
-準備が8割でも、動き出していい。
-残りの2割は、やりながら埋まっていきました。</pre>
-    </div>
-
-    <div class="cap">
-      <header><h3>C案・気づきをそのまま置く</h3><span class="use">実体験の色が一番濃い</span></header>
-      <pre>新しいことを始めるのに、
-完璧な準備はいりませんでした。
-
-やってみて、直す。
-そのほうが、ずっと早かった。</pre>
+    <h2><span class="n">02</span>4コマのネーム（絵の指示）</h2>
+    <p class="lede">絵を人に頼む場合・Canvaのイラスト素材に差し替える場合は、この表をそのまま渡せます。線画のままでも投稿できます。</p>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>コマ</th><th>絵</th><th>表情</th><th>セリフ</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>①</th><td>机に向かってノートを広げている</td><td>やる気がある・前向き</td><td>準備ができたら、始めよう</td></tr>
+          <tr><th>②</th><td>本や資料が山積み。人が小さく見える<br>（右上に「3か月後」）</td><td>困り眉。少し疲れている</td><td>まだ足りない気がする…</td></tr>
+          <tr><th>③</th><td>スマホを見ている。画面には誰かの投稿</td><td>目を見開いて驚く。汗ひとつ</td><td>え、あの人もう始めてる…！</td></tr>
+          <tr><th>④</th><td>本の山に背を向けて、一歩前に出る<br>（背景をうすい色に変えてオチを立てる）</td><td>吹っ切れた顔。口角を上げる</td><td>完璧に準備できている日は、来なかった。<br>まず、やってみていい。</td></tr>
+        </tbody>
+      </table>
     </div>
   </section>
 
   <section>
     <h2><span class="n">03</span>キャプション</h2>
-    <p class="lede">2案とも使います。案1はフィード投稿に、案2はリールとストーリーズの再告知に。同じ内容でも入口を変えると、届く相手が増えます。</p>
+    <p class="lede">2案とも使います。案1はこの投稿のキャプションに、案2はリールとストーリーズの再告知に。</p>
 
     <div class="cap">
       <header>
-        <h3>案1・やわらかめ</h3>
+        <h3>案1・4コマから本文へつなぐ</h3>
         <span class="use">フィード投稿（カルーセル）用</span>
         <button class="copy" data-target="cap1">コピー</button>
       </header>
-      <pre id="cap1">「あるがままのあなたでもっといける」
+      <pre id="cap1">「準備ができたら、始めよう」
 
-もっと自信がついたら。
-もっと実績ができたら。
-もっとちゃんとした自分になれたら。
+そう思っていた3か月のあいだに、
+本だけが増えていきました。
 
-そう思っているうちは、
-いつまでも“準備中”のままになってしまいます。
+そのあいだに、
+先に始めた人は、もう2周目に入っていて。
 
-前に進んでいる人は、
+完璧に準備できている日は、
+待っていても来ませんでした。
+
+準備が8割でも、動き出していい。
+残りの2割は、やりながら埋まっていきます。
+
+うまくいっている人は、
 別人に生まれ変わったわけではなくて、
 今の自分のまま、動きはじめた人でした。
-
-完璧な言葉じゃなくていい。
-実績が少なくてもいい。
-向いてないかも、と思ったままでもいい。
 
 自分を変えるんじゃなくて、
 今ある自分の使い方を変えるだけ。
@@ -357,7 +345,7 @@
 迷った日に読み返せるように、保存しておいてください🕊️
 
 ──
-あなたは今、何を「足りない」と感じていますか？
+いま「準備中」のこと、ありますか？
 よかったらコメントで教えてください。</pre>
     </div>
 
@@ -383,20 +371,20 @@
   </section>
 
   <section>
-    <h2><span class="n">04</span>リール台本（20〜30秒）</h2>
-    <p class="lede">カルーセルと同じ言葉を、順番だけ変えて流します。最初の3秒で手を止めてもらう構成です。</p>
+    <h2><span class="n">04</span>リール台本（30秒）</h2>
+    <p class="lede">4コマを1コマずつ見せて、最後に言葉のスライドで締めます。漫画は最後まで見られやすいので、リールとの相性がいい構成です。</p>
     <div class="tablewrap">
       <table>
         <thead>
           <tr><th>秒数</th><th>画面</th><th>テロップ</th></tr>
         </thead>
         <tbody>
-          <tr><td>0—3秒</td><td>表紙</td><td>「変わらなきゃ」と思った時点で、疲れてます</td></tr>
-          <tr><td>3—8秒</td><td>テロップ</td><td>もっと自信がついたら。もっと実績ができたら。</td></tr>
-          <tr><td>8—13秒</td><td>テロップ</td><td>その“もっと”、いつまで続きますか</td></tr>
-          <tr><td>13—20秒</td><td>本文</td><td>うまくいった人は、別人になったわけじゃない。今の自分のまま動いた人</td></tr>
-          <tr><td>20—27秒</td><td>締め</td><td>自分を変えなくていい。使い方を変えるだけ</td></tr>
-          <tr><td>27—30秒</td><td>CTA</td><td>保存して、迷った日に読み返してください</td></tr>
+          <tr><td>0—3秒</td><td>コマ①</td><td>準備ができたら、始めよう</td></tr>
+          <tr><td>3—7秒</td><td>コマ②</td><td>3か月後 ／ まだ足りない気がする…</td></tr>
+          <tr><td>7—12秒</td><td>コマ③</td><td>え、あの人もう始めてる…！</td></tr>
+          <tr><td>12—18秒</td><td>コマ④</td><td>完璧に準備できている日は、来なかった</td></tr>
+          <tr><td>18—25秒</td><td>言葉（3枚目）</td><td>うまくいった人は、今の自分のまま動いた人</td></tr>
+          <tr><td>25—30秒</td><td>CTA（6枚目）</td><td>保存して、迷った日に読み返してください</td></tr>
         </tbody>
       </table>
     </div>
@@ -412,10 +400,7 @@
       <span>#手放す</span><span>#自分を大切にする</span><span>#一歩踏み出す</span><span>#今日の言葉</span><span>#ことばの記録</span>
     </div>
     <div class="cap">
-      <header>
-        <h3>コピー用</h3>
-        <button class="copy" data-target="tags">コピー</button>
-      </header>
+      <header><h3>コピー用</h3><button class="copy" data-target="tags">コピー</button></header>
       <pre id="tags">#あるがままの自分 #自己肯定感 #自分らしく生きる #マインドセット #言葉の力
 #働き方 #働き方を考える #副業 #副業初心者 #フリーランス
 #フリーランス女子 #在宅ワーク #自分軸 #頑張りすぎない #心が軽くなる言葉
@@ -427,18 +412,19 @@
     <h2><span class="n">06</span>デザイン指定</h2>
     <p class="lede">ベージュ×テラコッタのような“よくある自己啓発投稿”の配色をあえて外し、白磁×深緑でまとめています。落ち着いていて、他のアカウントと並んだときに沈まない組み合わせです。</p>
     <div class="spec">
-      <div class="swatch"><div class="chipcolor" style="background:#EEF1EC"></div><b>白磁</b><code>#EEF1EC</code><br><code>背景（1〜7枚目）</code></div>
-      <div class="swatch"><div class="chipcolor" style="background:#22271F"></div><b>墨</b><code>#22271F</code><br><code>見出し・本文</code></div>
-      <div class="swatch"><div class="chipcolor" style="background:#2F5D4A"></div><b>松葉</b><code>#2F5D4A</code><br><code>アクセント・8枚目の背景</code></div>
+      <div class="swatch"><div class="chipcolor" style="background:#EEF1EC"></div><b>白磁</b><code>#EEF1EC</code><br><code>背景（2〜5枚目・4コマの地）</code></div>
+      <div class="swatch"><div class="chipcolor" style="background:#22271F"></div><b>墨</b><code>#22271F</code><br><code>見出し・本文・コマの線</code></div>
+      <div class="swatch"><div class="chipcolor" style="background:#2F5D4A"></div><b>松葉</b><code>#2F5D4A</code><br><code>アクセント・6枚目の背景</code></div>
       <div class="swatch"><div class="chipcolor" style="background:#7FA08C"></div><b>若竹</b><code>#7FA08C</code><br><code>補助テキスト・罫線</code></div>
-      <div class="swatch"><div class="chipcolor" style="background:#DDE4DA"></div><b>苔（淡）</b><code>#DDE4DA</code><br><code>3枚目の面の塗り分け</code></div>
+      <div class="swatch"><div class="chipcolor" style="background:#DDE4DA"></div><b>苔（淡）</b><code>#DDE4DA</code><br><code>2枚目の地・4コマ目の背景</code></div>
     </div>
     <div class="tablewrap">
       <table>
         <tbody>
           <tr><th>見出し</th><td>Zen Old Mincho（明朝）／言葉が主役の枚は明朝で大きく</td></tr>
-          <tr><th>本文</th><td>Zen Kaku Gothic New（ゴシック）</td></tr>
-          <tr><th>ページ表記</th><td>Zen Kaku Gothic New・字間広め／右上に「01 / 08」</td></tr>
+          <tr><th>本文・セリフ</th><td>Zen Kaku Gothic New（ゴシック）</td></tr>
+          <tr><th>ページ表記</th><td>右上に「01 / 06」。字間を広めに</td></tr>
+          <tr><th>4コマの線</th><td>墨・太さ2.4pt相当・角と端を丸く。コマ枠は1.5pt</td></tr>
           <tr><th>余白</th><td>上下左右に約90px。1枚の文字数は最小限に</td></tr>
           <tr><th>フォント入手</th><td>Google Fonts（無料）。Canvaにも同名フォントあり</td></tr>
         </tbody>
@@ -449,9 +435,10 @@
   <section>
     <h2><span class="n">07</span>次のアクション</h2>
     <ul class="todo">
-      <li class="done">6枚目の実体験を差し替え（A案を反映）</li>
-      <li class="done">キャプションは2案とも採用（フィード／リール）</li>
-      <li>カルーセル8枚を作成（デザイン指定は05を参照）</li>
+      <li class="done">構成を全6枚に確定（1枚目＝4コマ）</li>
+      <li class="done">キャプション2案・リール台本・ハッシュタグを用意</li>
+      <li>絵のタッチを決める（この線画のまま／Canvaのイラスト素材に差し替え）</li>
+      <li>6枚の画像を作成</li>
       <li>平日20:00〜22:00に投稿、ハッシュタグを貼る</li>
     </ul>
   </section>
