@@ -1,0 +1,315 @@
+<title>準備が終わらない4コマ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+  :root {
+    --ground: #F2F4F0; --surface: #FFFFFF; --line: #D8DED4;
+    --ink: #22271F; --ink-soft: #5C6659; --accent: #2F5D4A;
+    --accent-soft: #7FA08C; --chip: #E4EADF;
+    --art-bg: #EEF1EC; --art-ink: #22271F; --art-accent: #2F5D4A;
+    --art-sub: #7FA08C; --art-tint: #DDE4DA; --art-white: #FBFCFA;
+    --mincho: "Zen Old Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    --gothic: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #161A15; --surface: #1E231C; --line: #313829;
+      --ink: #E6EBE3; --ink-soft: #A3AE9C; --accent: #86B79B;
+      --accent-soft: #6C8B79; --chip: #2A3127;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #161A15; --surface: #1E231C; --line: #313829;
+    --ink: #E6EBE3; --ink-soft: #A3AE9C; --accent: #86B79B;
+    --accent-soft: #6C8B79; --chip: #2A3127;
+  }
+
+  body { background: var(--ground); color: var(--ink); font-family: var(--gothic); line-height: 1.9; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 940px; margin: 0 auto; padding: 56px 24px 96px; }
+  section { margin-top: 68px; }
+  .eyebrow { font-size: 12px; letter-spacing: .22em; color: var(--accent); font-weight: 700; margin: 0 0 14px; }
+  h1 { font-family: var(--mincho); font-weight: 600; font-size: clamp(28px, 5.5vw, 42px); line-height: 1.5; margin: 0 0 18px; text-wrap: balance; }
+  h2 { font-family: var(--mincho); font-weight: 600; font-size: 21px; letter-spacing: .04em; margin: 0 0 6px; padding-bottom: 12px; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 12px; }
+  h2 .n { font-family: var(--gothic); font-size: 11px; letter-spacing: .18em; color: var(--accent-soft); font-weight: 700; }
+  .lede { color: var(--ink-soft); font-size: 14px; max-width: 62ch; margin: 14px 0 0; }
+  .meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .meta span { background: var(--chip); border-radius: 999px; padding: 6px 14px; font-size: 12.5px; }
+
+  /* ---- 4コマの用紙 ---- */
+  .sheet {
+    container-type: inline-size;
+    aspect-ratio: 1 / 1; background: var(--art-bg);
+    border: 1px solid var(--line); border-radius: 2px;
+    padding: 5cqw; margin-top: 32px;
+    display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr 1fr;
+    gap: 3cqw;
+  }
+  .sheet .head { grid-column: 1 / -1; display: flex; align-items: baseline; justify-content: space-between; gap: 2cqw; }
+  .sheet .head b { font-family: var(--mincho); font-size: 4.6cqw; font-weight: 600; color: var(--art-ink); }
+  .sheet .head span { font-family: var(--gothic); font-size: 2.4cqw; letter-spacing: .18em; color: var(--art-sub); font-weight: 700; }
+
+  .koma {
+    background: var(--art-white); border: 1.5px solid var(--art-ink);
+    position: relative; overflow: hidden;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 3cqw 2.5cqw 0;
+  }
+  .koma .num {
+    position: absolute; top: 1.6cqw; left: 2cqw;
+    font-family: var(--gothic); font-size: 2.4cqw; font-weight: 700; color: var(--art-sub);
+  }
+  .koma .when {
+    position: absolute; top: 1.6cqw; right: 2cqw;
+    font-family: var(--gothic); font-size: 2.2cqw; color: var(--art-sub); letter-spacing: .06em;
+  }
+  .koma .bubble {
+    background: var(--art-bg); border: 1.2px solid var(--art-ink);
+    border-radius: 3cqw; padding: 1.6cqw 2.4cqw;
+    font-family: var(--gothic); font-size: 2.5cqw; line-height: 1.6; text-align: center;
+    color: var(--art-ink); margin-top: 3.4cqw; position: relative; max-width: 92%;
+  }
+  .koma .bubble::after {
+    content: ""; position: absolute; bottom: -1.5cqw; left: 50%; transform: translateX(-50%);
+    width: 0; height: 0; border-left: 1.4cqw solid transparent; border-right: 1.4cqw solid transparent;
+    border-top: 1.6cqw solid var(--art-ink);
+  }
+  .koma .bubble::before {
+    content: ""; position: absolute; bottom: -1.1cqw; left: 50%; transform: translateX(-50%);
+    width: 0; height: 0; border-left: 1.2cqw solid transparent; border-right: 1.2cqw solid transparent;
+    border-top: 1.4cqw solid var(--art-bg); z-index: 1;
+  }
+  .koma .line {
+    font-family: var(--gothic); font-size: 2.5cqw; line-height: 1.6; text-align: center;
+    color: var(--art-ink); margin: 3cqw 0 0;
+  }
+  .koma .line em { font-style: normal; color: var(--art-accent); font-weight: 700; }
+  .koma svg { width: 74%; margin-top: auto; display: block; }
+  .koma.final { background: var(--art-tint); }
+
+  /* ---- ネーム表 ---- */
+  .tablewrap { overflow-x: auto; margin-top: 24px; border: 1px solid var(--line); border-radius: 3px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: 13.5px; }
+  th, td { text-align: left; padding: 13px 18px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  thead th { font-size: 11.5px; letter-spacing: .14em; color: var(--accent); font-weight: 700; }
+  tbody th { font-size: 13px; color: var(--ink-soft); white-space: nowrap; font-weight: 500; }
+  tr:last-child td, tr:last-child th { border-bottom: none; }
+
+  .cap { background: var(--surface); border: 1px solid var(--line); border-radius: 3px; margin-top: 24px; }
+  .cap header { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; padding: 14px 20px; border-bottom: 1px solid var(--line); }
+  .cap h3 { margin: 0; font-size: 14px; font-weight: 700; letter-spacing: .04em; }
+  .cap .use { font-size: 12px; color: var(--accent); }
+  .cap pre { margin: 0; padding: 22px 24px; white-space: pre-wrap; word-break: break-word; font-family: var(--gothic); font-size: 14px; line-height: 2.1; }
+  button.copy { font-family: var(--gothic); font-size: 12px; letter-spacing: .06em; cursor: pointer; background: transparent; color: var(--accent); border: 1px solid var(--accent-soft); border-radius: 999px; padding: 5px 14px; }
+  button.copy:hover { background: var(--chip); }
+  button.copy:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 24px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 3px; padding: 18px 20px; }
+  .card b { display: block; font-size: 13.5px; margin-bottom: 6px; }
+  .card p { margin: 0; font-size: 13px; color: var(--ink-soft); line-height: 1.85; }
+  .card .tagline { display: inline-block; font-size: 11px; letter-spacing: .12em; font-weight: 700; color: var(--accent); margin-bottom: 10px; }
+
+  .todo { list-style: none; padding: 0; margin: 24px 0 0; display: flex; flex-direction: column; gap: 10px; }
+  .todo li { display: flex; gap: 12px; font-size: 14px; }
+  .todo li::before { content: "□"; color: var(--accent-soft); }
+  footer { margin-top: 76px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--ink-soft); }
+</style>
+
+<div class="wrap">
+  <p class="eyebrow">INSTAGRAM ｜ 4コマ案</p>
+  <h1>準備が終わらない4コマ</h1>
+  <p class="lede">カルーセル6枚目の「完璧に準備できていなくても、まずやってみていい」を、そのまま4コマにしたものです。人物は線画で置いています。この構図のままCanvaのイラスト素材に差し替えれば、絵のタッチだけ変えられます。</p>
+  <div class="meta">
+    <span>1080 × 1080px</span>
+    <span>2×2の4コマ</span>
+    <span>カルーセル1枚目に置く想定</span>
+  </div>
+
+  <section>
+    <h2><span class="n">01</span>4コマ本体</h2>
+
+    <div class="sheet">
+      <div class="head">
+        <b>準備が終わらない</b>
+        <span>ARUGAMAMA ｜ 01</span>
+      </div>
+
+      <div class="koma">
+        <span class="num">①</span>
+        <p class="bubble">準備ができたら、<br>始めよう</p>
+        <svg viewBox="0 0 200 130" fill="none" stroke="#22271F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="机に向かってノートを開いている人">
+          <circle cx="72" cy="30" r="17"/>
+          <circle cx="66" cy="29" r="1.9" fill="#22271F" stroke="none"/>
+          <circle cx="79" cy="29" r="1.9" fill="#22271F" stroke="none"/>
+          <path d="M68 37 q4.5 3.5 9 0"/>
+          <path d="M72 47 v30"/>
+          <path d="M72 56 l-15 14 M72 56 l22 16"/>
+          <path d="M40 95 h130" stroke-width="3"/>
+          <path d="M96 95 l8 -13 h34 l-8 13 z" fill="#EEF1EC"/>
+          <path d="M112 86 h14 M110 90 h18"/>
+          <path d="M52 95 v22 M158 95 v22"/>
+        </svg>
+      </div>
+
+      <div class="koma">
+        <span class="num">②</span>
+        <span class="when">3か月後</span>
+        <p class="bubble">まだ足りない<br>気がする…</p>
+        <svg viewBox="0 0 200 130" fill="none" stroke="#22271F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="積み上がった本の山の横で困っている人">
+          <circle cx="62" cy="36" r="17"/>
+          <circle cx="56" cy="35" r="1.9" fill="#22271F" stroke="none"/>
+          <circle cx="69" cy="35" r="1.9" fill="#22271F" stroke="none"/>
+          <path d="M56 44 q6 -3.5 12 0"/>
+          <path d="M62 53 v28"/>
+          <path d="M62 60 l-14 12 M62 60 l14 12"/>
+          <path d="M62 81 l-10 22 M62 81 l10 22"/>
+          <rect x="112" y="88" width="62" height="15" rx="2" fill="#EEF1EC"/>
+          <rect x="118" y="73" width="52" height="15" rx="2" fill="#EEF1EC"/>
+          <rect x="114" y="58" width="58" height="15" rx="2" fill="#EEF1EC"/>
+          <rect x="120" y="43" width="46" height="15" rx="2" fill="#EEF1EC"/>
+          <rect x="116" y="28" width="52" height="15" rx="2" fill="#EEF1EC"/>
+          <path d="M104 103 h78" stroke-width="3"/>
+        </svg>
+      </div>
+
+      <div class="koma">
+        <span class="num">③</span>
+        <p class="bubble">え、あの人<br>もう始めてる…！</p>
+        <svg viewBox="0 0 200 130" fill="none" stroke="#22271F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="スマホを見て驚いている人">
+          <path d="M118 22 l9 -11 M132 26 l13 -7" stroke="#2F5D4A"/>
+          <circle cx="96" cy="42" r="18"/>
+          <circle cx="89" cy="41" r="2.4" fill="#22271F" stroke="none"/>
+          <circle cx="103" cy="41" r="2.4" fill="#22271F" stroke="none"/>
+          <ellipse cx="96" cy="50" rx="4.5" ry="3.6"/>
+          <path d="M118 34 q5 7 0 13" stroke="#7FA08C"/>
+          <path d="M96 60 v26"/>
+          <path d="M96 66 l-16 10 M96 66 l16 10"/>
+          <path d="M96 86 l-11 20 M96 86 l11 20"/>
+          <rect x="104" y="70" width="17" height="27" rx="3" fill="#EEF1EC"/>
+          <path d="M108 77 h9 M108 82 h9 M108 87 h5"/>
+        </svg>
+      </div>
+
+      <div class="koma final">
+        <span class="num">④</span>
+        <p class="line">完璧に準備できている日は、<br>来なかった。<br><em>まず、やってみていい。</em></p>
+        <svg viewBox="0 0 200 130" fill="none" stroke="#22271F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="本の山に背を向けて一歩踏み出す人">
+          <rect x="18" y="88" width="46" height="13" rx="2" fill="#EEF1EC"/>
+          <rect x="22" y="75" width="38" height="13" rx="2" fill="#EEF1EC"/>
+          <rect x="20" y="62" width="42" height="13" rx="2" fill="#EEF1EC"/>
+          <circle cx="118" cy="40" r="17"/>
+          <circle cx="112" cy="39" r="1.9" fill="#22271F" stroke="none"/>
+          <circle cx="125" cy="39" r="1.9" fill="#22271F" stroke="none"/>
+          <path d="M113 46 q5.5 4.5 11 0"/>
+          <path d="M118 57 v26"/>
+          <path d="M118 63 l-15 -9 M118 63 l16 12"/>
+          <path d="M118 83 l-14 18 M118 83 l16 18"/>
+          <path d="M150 30 v10 M156 36 h-12" stroke="#2F5D4A"/>
+          <path d="M10 101 h180" stroke-width="3"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">02</span>ネーム（絵の指示）</h2>
+    <p class="lede">絵を人に頼む場合・Canvaの素材に差し替える場合は、この表をそのまま渡せます。</p>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>コマ</th><th>絵</th><th>表情</th><th>セリフ</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>①</th><td>机に向かってノートを広げている</td><td>やる気がある・前向き</td><td>準備ができたら、始めよう</td></tr>
+          <tr><th>②</th><td>本や資料が山積み。人が小さく見える<br>（右上に「3か月後」）</td><td>困り眉。少し疲れている</td><td>まだ足りない気がする…</td></tr>
+          <tr><th>③</th><td>スマホを見ている。画面には誰かの投稿</td><td>目を見開いて驚く。汗ひとつ</td><td>え、あの人もう始めてる…！</td></tr>
+          <tr><th>④</th><td>本の山に背を向けて、一歩前に出る<br>（背景をうすい色に変えてオチを立てる）</td><td>吹っ切れた顔。口角を上げる</td><td>完璧に準備できている日は、来なかった。<br>まず、やってみていい。</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">03</span>カルーセルへの組み込み方</h2>
+    <p class="lede">4コマだけで終わらせると保存されにくいので、言葉のスライドと組み合わせるのがおすすめです。</p>
+    <div class="cols">
+      <div class="card">
+        <span class="tagline">案1・おすすめ</span>
+        <b>4コマ＋言葉スライド（全6枚）</b>
+        <p>1枚目にこの4コマ、2〜5枚目は今のカルーセルから4枚目・5枚目・7枚目・8枚目を使う。<br>漫画で足を止めてもらい、言葉で保存してもらう形です。作る枚数も減ります。</p>
+      </div>
+      <div class="card">
+        <span class="tagline">案2</span>
+        <b>4コマを1枚目だけに使う（全8枚）</b>
+        <p>今の8枚構成はそのままで、表紙だけ4コマに差し替える。<br>いま作ってある文言をすべて活かせますが、表紙の文字が小さくなります。</p>
+      </div>
+      <div class="card">
+        <span class="tagline">案3</span>
+        <b>4コマをリールにする</b>
+        <p>1コマずつ順に表示して、最後の④で止める。<br>漫画は最後まで見られやすいので、リールとの相性は一番いいです。</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">04</span>キャプション（4コマ版）</h2>
+    <div class="cap">
+      <header><h3>4コマ投稿用</h3><span class="use">漫画から本文へつなげる書き方</span><button class="copy" data-target="cap4">コピー</button></header>
+      <pre id="cap4">「準備ができたら、始めよう」
+
+そう思っていた3か月のあいだに、
+本だけが増えていきました。
+
+そのあいだに、
+先に始めた人は、もう2周目に入っていて。
+
+完璧に準備できている日は、
+待っていても来ませんでした。
+
+準備が8割でも、動き出していい。
+残りの2割は、やりながら埋まっていきます。
+
+新しいことを始めようとしている人へ。
+あるがままのあなたで、もっといけます。
+
+迷った日に読み返せるように、保存しておいてください🕊️
+
+──
+いま「準備中」のこと、ありますか？
+よかったらコメントで教えてください。</pre>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">05</span>次のアクション</h2>
+    <ul class="todo">
+      <li>4コマでいくか、言葉だけのカルーセルでいくかを決める</li>
+      <li>4コマでいく場合、組み込み方を案1〜3から選ぶ</li>
+      <li>絵のタッチを決める（この線画のまま／Canvaのイラスト素材に差し替え）</li>
+    </ul>
+  </section>
+
+  <footer>秘書室 ｜ カルーセル案（instagram-arugamama-motto-ikeru.md）から派生した4コマ案です。</footer>
+</div>
+
+<script>
+  document.querySelectorAll("button.copy").forEach(function (btn) {
+    btn.addEventListener("click", async function () {
+      var el = document.getElementById(btn.dataset.target);
+      var original = btn.textContent;
+      try {
+        await navigator.clipboard.writeText(el.textContent);
+        btn.textContent = "コピーしました";
+      } catch (e) {
+        var range = document.createRange();
+        range.selectNodeContents(el);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        btn.textContent = "選択しました。手動でコピーしてください";
+      }
+      setTimeout(function () { btn.textContent = original; }, 2600);
+    });
+  });
+</script>
