@@ -118,6 +118,18 @@
   .swatch b { display: block; font-size: 13px; margin-bottom: 2px; }
   .swatch code { font-size: 12px; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
 
+
+  /* ---- 起承転結 ---- */
+  .kishou { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 26px; }
+  .kishou > div { background: var(--surface); border: 1px solid var(--line); border-radius: 3px; padding: 20px; display: flex; flex-direction: column; gap: 8px; }
+  .kishou .kanji { font-family: var(--mincho); font-size: 34px; line-height: 1; color: var(--accent); font-weight: 600; }
+  .kishou .role { font-size: 11.5px; letter-spacing: .14em; font-weight: 700; color: var(--ink-soft); }
+  .kishou .what { font-size: 13.5px; line-height: 1.8; margin: 0; }
+  .kishou .why { font-size: 12.5px; line-height: 1.8; color: var(--ink-soft); margin: 0; padding-top: 8px; border-top: 1px solid var(--line); }
+  .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 22px; font-family: var(--mincho); font-size: 15px; color: var(--accent); }
+  .flow span { background: var(--chip); border-radius: 3px; padding: 4px 14px; }
+  .flow i { font-style: normal; color: var(--accent-soft); }
+
   .todo { list-style: none; padding: 0; margin: 24px 0 0; display: flex; flex-direction: column; gap: 10px; }
   .todo li { display: flex; gap: 12px; font-size: 14px; }
   .todo li::before { content: "□"; color: var(--accent-soft); }
@@ -151,7 +163,7 @@
           </div>
 
           <div class="koma">
-            <span class="num">①</span>
+            <span class="num">① 起</span>
             <p class="bubble">準備ができたら、<br>始めよう</p>
             <svg viewBox="0 0 200 130" fill="none" stroke="#22271F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="机に向かってノートを開いている人">
               <circle cx="72" cy="30" r="17"/>
@@ -168,7 +180,7 @@
           </div>
 
           <div class="koma">
-            <span class="num">②</span>
+            <span class="num">② 承</span>
             <span class="when">3か月後</span>
             <p class="bubble">まだ足りない<br>気がする…</p>
             <svg viewBox="0 0 200 130" fill="none" stroke="#22271F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="積み上がった本の山の横で困っている人">
@@ -189,8 +201,8 @@
           </div>
 
           <div class="koma">
-            <span class="num">③</span>
-            <p class="bubble">え、あの人<br>もう始めてる…！</p>
+            <span class="num">③ 転</span>
+            <p class="bubble">準備してるあいだに、<br>もう2周目…！？</p>
             <svg viewBox="0 0 200 130" fill="none" stroke="#22271F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="スマホを見て驚いている人">
               <path d="M118 22 l9 -11 M132 26 l13 -7" stroke="#2F5D4A"/>
               <circle cx="96" cy="42" r="18"/>
@@ -207,8 +219,8 @@
           </div>
 
           <div class="koma final">
-            <span class="num">④</span>
-            <p class="line">完璧に準備できている日は、<br>来なかった。<br><em>まず、やってみていい。</em></p>
+            <span class="num">④ 結</span>
+            <p class="line">完璧に準備できている日は、<br>来なかった。<br><em>8割で、始めてみる。</em></p>
             <svg viewBox="0 0 200 130" fill="none" stroke="#22271F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-label="本の山に背を向けて一歩踏み出す人">
               <rect x="18" y="88" width="46" height="13" rx="2" fill="#EEF1EC"/>
               <rect x="22" y="75" width="38" height="13" rx="2" fill="#EEF1EC"/>
@@ -225,7 +237,7 @@
             </svg>
           </div>
         </div>
-        <p class="note"><b>1枚目・4コマ</b>フックと共感と体験を、この1枚で兼ねています</p>
+        <p class="note"><b>1枚目・4コマ</b>起（意気込む）→ 承（止まったまま）→ 転（先を越される）→ 結（8割で動く）</p>
       </div>
 
       <div class="slide">
@@ -292,18 +304,46 @@
   </section>
 
   <section>
-    <h2><span class="n">02</span>4コマのネーム（絵の指示）</h2>
-    <p class="lede">絵を人に頼む場合・Canvaのイラスト素材に差し替える場合は、この表をそのまま渡せます。線画のままでも投稿できます。</p>
+    <h2><span class="n">02</span>4コマの起承転結</h2>
+    <p class="lede">1コマずつに役割を持たせています。とくに③の「転」を強くしました。ここが弱いと、4コマが「困っている話」で終わってしまうためです。<br>画像にも各コマの左上に「① 起」のように小さく入れています。読み手が構造を追いやすくなりますが、説明的に感じる場合は外せます。</p>
+    <div class="kishou">
+      <div>
+        <span class="kanji">起</span>
+        <span class="role">コマ① ／ 立ち上がり</span>
+        <p class="what">「準備ができたら、始めよう」と机に向かう。</p>
+        <p class="why">まだ何も間違っていない、前向きな状態から始める。ここで読み手を自分側に置きます。</p>
+      </div>
+      <div>
+        <span class="kanji">承</span>
+        <span class="role">コマ② ／ 同じ状態が続く</span>
+        <p class="what">3か月後。本だけが積み上がり、「まだ足りない気がする…」。</p>
+        <p class="why">起の続きをそのまま引き延ばす。時間が経っても動いていない、が伝わればここは成功です。</p>
+      </div>
+      <div>
+        <span class="kanji">転</span>
+        <span class="role">コマ③ ／ 外から入る衝撃</span>
+        <p class="what">スマホを開くと、あの人はもう2周目。</p>
+        <p class="why">自分の中の理屈が、外の事実で崩れる瞬間。ここが一番強い山になるよう、驚きの表情と効果線を大きく入れます。</p>
+      </div>
+      <div>
+        <span class="kanji">結</span>
+        <span class="role">コマ④ ／ 行動で着地する</span>
+        <p class="what">本の山に背を向けて、「8割で、始めてみる。」</p>
+        <p class="why">気持ちの整理で終わらせず、行動で締める。背景の色を変えて、ここがオチだと目で分かるようにします。</p>
+      </div>
+    </div>
+
+    <p class="flow"><span>起・意気込む</span><i>→</i><span>承・止まったまま</span><i>→</i><span>転・先を越される</span><i>→</i><span>結・8割で動く</span></p>
     <div class="tablewrap">
       <table>
         <thead>
-          <tr><th>コマ</th><th>絵</th><th>表情</th><th>セリフ</th></tr>
+          <tr><th>コマ</th><th>役割</th><th>絵</th><th>表情</th><th>セリフ</th></tr>
         </thead>
         <tbody>
-          <tr><th>①</th><td>机に向かってノートを広げている</td><td>やる気がある・前向き</td><td>準備ができたら、始めよう</td></tr>
-          <tr><th>②</th><td>本や資料が山積み。人が小さく見える<br>（右上に「3か月後」）</td><td>困り眉。少し疲れている</td><td>まだ足りない気がする…</td></tr>
-          <tr><th>③</th><td>スマホを見ている。画面には誰かの投稿</td><td>目を見開いて驚く。汗ひとつ</td><td>え、あの人もう始めてる…！</td></tr>
-          <tr><th>④</th><td>本の山に背を向けて、一歩前に出る<br>（背景をうすい色に変えてオチを立てる）</td><td>吹っ切れた顔。口角を上げる</td><td>完璧に準備できている日は、来なかった。<br>まず、やってみていい。</td></tr>
+          <tr><th>① 起</th><td>立ち上がり</td><td>机に向かってノートを広げている</td><td>やる気がある・前向き</td><td>準備ができたら、始めよう</td></tr>
+          <tr><th>② 承</th><td>同じ状態が続く</td><td>本や資料が山積み。人が小さく見える<br>（右上に「3か月後」）</td><td>困り眉。少し疲れている</td><td>まだ足りない気がする…</td></tr>
+          <tr><th>③ 転</th><td>外から入る衝撃</td><td>スマホを見ている。画面には先に始めた人の投稿。効果線を大きく</td><td>目を見開いて驚く。汗ひとつ</td><td>準備してるあいだに、もう2周目…！？</td></tr>
+          <tr><th>④ 結</th><td>行動で着地する</td><td>本の山に背を向けて、一歩前に出る<br>（背景をうすい色に変えてオチを立てる）</td><td>吹っ切れた顔。口角を上げる</td><td>完璧に準備できている日は、来なかった。<br>8割で、始めてみる。</td></tr>
         </tbody>
       </table>
     </div>
@@ -325,7 +365,7 @@
 本だけが増えていきました。
 
 そのあいだに、
-先に始めた人は、もう2周目に入っていて。
+先に始めた人は、もう2周目に入っていました。
 
 完璧に準備できている日は、
 待っていても来ませんでした。
@@ -379,10 +419,10 @@
           <tr><th>秒数</th><th>画面</th><th>テロップ</th></tr>
         </thead>
         <tbody>
-          <tr><td>0—3秒</td><td>コマ①</td><td>準備ができたら、始めよう</td></tr>
-          <tr><td>3—7秒</td><td>コマ②</td><td>3か月後 ／ まだ足りない気がする…</td></tr>
-          <tr><td>7—12秒</td><td>コマ③</td><td>え、あの人もう始めてる…！</td></tr>
-          <tr><td>12—18秒</td><td>コマ④</td><td>完璧に準備できている日は、来なかった</td></tr>
+          <tr><td>0—3秒</td><td>コマ①（起）</td><td>準備ができたら、始めよう</td></tr>
+          <tr><td>3—7秒</td><td>コマ②（承）</td><td>3か月後 ／ まだ足りない気がする…</td></tr>
+          <tr><td>7—12秒</td><td>コマ③（転）</td><td>準備してるあいだに、もう2周目…！？</td></tr>
+          <tr><td>12—18秒</td><td>コマ④（結）</td><td>完璧に準備できている日は、来なかった／8割で、始めてみる</td></tr>
           <tr><td>18—25秒</td><td>言葉（3枚目）</td><td>うまくいった人は、今の自分のまま動いた人</td></tr>
           <tr><td>25—30秒</td><td>CTA（6枚目）</td><td>保存して、迷った日に読み返してください</td></tr>
         </tbody>
