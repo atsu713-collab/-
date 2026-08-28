@@ -1,0 +1,447 @@
+<title>あるがままのあなたでもっといける</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+  :root {
+    --ground: #F2F4F0;
+    --surface: #FFFFFF;
+    --line: #D8DED4;
+    --ink: #22271F;
+    --ink-soft: #5C6659;
+    --accent: #2F5D4A;
+    --accent-soft: #7FA08C;
+    --chip: #E4EADF;
+
+    /* 画像そのものの色。テーマで変えない（実際の投稿画像の見た目） */
+    --art-bg: #EEF1EC;
+    --art-ink: #22271F;
+    --art-accent: #2F5D4A;
+    --art-sub: #7FA08C;
+    --art-tint: #DDE4DA;
+
+    --mincho: "Zen Old Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    --gothic: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #161A15;
+      --surface: #1E231C;
+      --line: #313829;
+      --ink: #E6EBE3;
+      --ink-soft: #A3AE9C;
+      --accent: #86B79B;
+      --accent-soft: #6C8B79;
+      --chip: #2A3127;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #161A15;
+    --surface: #1E231C;
+    --line: #313829;
+    --ink: #E6EBE3;
+    --ink-soft: #A3AE9C;
+    --accent: #86B79B;
+    --accent-soft: #6C8B79;
+    --chip: #2A3127;
+  }
+
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--gothic);
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 56px 24px 96px; }
+  section { margin-top: 72px; }
+
+  .eyebrow {
+    font-size: 12px; letter-spacing: .22em; color: var(--accent);
+    font-weight: 700; margin: 0 0 14px;
+  }
+  h1 {
+    font-family: var(--mincho); font-weight: 600;
+    font-size: clamp(30px, 6vw, 46px); line-height: 1.5; letter-spacing: .02em;
+    margin: 0 0 20px; text-wrap: balance;
+  }
+  h2 {
+    font-family: var(--mincho); font-weight: 600;
+    font-size: 22px; letter-spacing: .04em; margin: 0 0 6px;
+    padding-bottom: 12px; border-bottom: 1px solid var(--line);
+    display: flex; align-items: baseline; gap: 12px;
+  }
+  h2 .n { font-family: var(--gothic); font-size: 11px; letter-spacing: .18em; color: var(--accent-soft); font-weight: 700; }
+  .lede { color: var(--ink-soft); font-size: 14px; max-width: 62ch; margin: 14px 0 0; }
+
+  .meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .meta span {
+    background: var(--chip); color: var(--ink); border-radius: 999px;
+    padding: 6px 14px; font-size: 12.5px; letter-spacing: .03em;
+  }
+
+  /* ---- スライド ---- */
+  .slides { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px 28px; margin-top: 32px; }
+  @media (max-width: 720px) { .slides { grid-template-columns: 1fr; } }
+
+  .slide { display: flex; flex-direction: column; gap: 12px; }
+  .art {
+    container-type: inline-size;
+    aspect-ratio: 1 / 1;
+    background: var(--art-bg); color: var(--art-ink);
+    border: 1px solid var(--line); border-radius: 2px;
+    padding: 9cqw; display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+  }
+  .art .pg {
+    position: absolute; top: 6cqw; right: 7cqw;
+    font-family: var(--gothic); font-size: 2.6cqw; letter-spacing: .2em;
+    color: var(--art-sub); font-weight: 700;
+  }
+  .art .big {
+    font-family: var(--mincho); font-weight: 600;
+    font-size: 8.4cqw; line-height: 1.55; letter-spacing: .03em; margin: 0;
+  }
+  .art .mid { font-family: var(--mincho); font-size: 6.2cqw; line-height: 1.75; margin: 0; }
+  .art .body { font-family: var(--gothic); font-size: 4.4cqw; line-height: 2; margin: 0; }
+  .art .small { font-family: var(--gothic); font-size: 3.5cqw; line-height: 1.9; color: var(--art-sub); margin: 0; }
+  .art .rule { width: 14cqw; height: 2px; background: var(--art-accent); margin: 5cqw 0; }
+  .art .spacer { flex: 1; }
+  .art em { font-style: normal; color: var(--art-accent); font-weight: 700; }
+  .art ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 3.4cqw; }
+  .art li { font-size: 4.2cqw; line-height: 1.75; padding-left: 5cqw; position: relative; }
+  .art li::before { content: ""; position: absolute; left: 0; top: .85em; width: 3cqw; height: 1px; background: var(--art-sub); }
+  .art.invert { background: var(--art-accent); color: var(--art-bg); }
+  .art.invert .pg, .art.invert .small { color: #A9C4B4; }
+  .art.tint { background: var(--art-tint); }
+  .art .card {
+    background: var(--art-bg); border: 1px dashed var(--art-sub);
+    padding: 5cqw; font-size: 3.8cqw; line-height: 1.9; color: var(--art-ink);
+  }
+  .art .tag {
+    display: inline-block; font-size: 2.8cqw; letter-spacing: .16em; font-weight: 700;
+    color: var(--art-accent); border: 1px solid var(--art-accent);
+    padding: .6cqw 2.4cqw; margin-bottom: 4cqw;
+  }
+
+  .note { display: flex; gap: 12px; align-items: baseline; font-size: 13px; color: var(--ink-soft); }
+  .note b { font-family: var(--gothic); color: var(--accent); font-size: 11.5px; letter-spacing: .12em; white-space: nowrap; }
+
+  /* ---- キャプション ---- */
+  .cap { background: var(--surface); border: 1px solid var(--line); border-radius: 3px; margin-top: 24px; }
+  .cap header {
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between;
+    padding: 14px 20px; border-bottom: 1px solid var(--line);
+  }
+  .cap h3 { margin: 0; font-family: var(--gothic); font-size: 14px; font-weight: 700; letter-spacing: .04em; }
+  .cap .use { font-size: 12px; color: var(--accent); letter-spacing: .04em; }
+  .cap pre {
+    margin: 0; padding: 22px 24px; white-space: pre-wrap; word-break: break-word;
+    font-family: var(--gothic); font-size: 14px; line-height: 2.1; color: var(--ink);
+  }
+  button.copy {
+    font-family: var(--gothic); font-size: 12px; letter-spacing: .06em; cursor: pointer;
+    background: transparent; color: var(--accent); border: 1px solid var(--accent-soft);
+    border-radius: 999px; padding: 5px 14px;
+  }
+  button.copy:hover { background: var(--chip); }
+  button.copy:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* ---- 表 ---- */
+  .tablewrap { overflow-x: auto; margin-top: 24px; border: 1px solid var(--line); border-radius: 3px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 13.5px; }
+  th, td { text-align: left; padding: 13px 18px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: 11.5px; letter-spacing: .14em; color: var(--accent); font-weight: 700; }
+  td:first-child { font-variant-numeric: tabular-nums; color: var(--ink-soft); white-space: nowrap; }
+  tr:last-child td { border-bottom: none; }
+
+  /* ---- ハッシュタグ・仕様 ---- */
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+  .tags span { background: var(--chip); border-radius: 3px; padding: 5px 11px; font-size: 12.5px; }
+
+  .spec { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 18px; margin-top: 26px; }
+  .swatch { background: var(--surface); border: 1px solid var(--line); border-radius: 3px; padding: 16px; }
+  .swatch .chipcolor { height: 46px; border-radius: 2px; border: 1px solid var(--line); margin-bottom: 12px; }
+  .swatch b { display: block; font-size: 13px; margin-bottom: 2px; }
+  .swatch code { font-size: 12px; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+
+  .todo { list-style: none; padding: 0; margin: 24px 0 0; display: flex; flex-direction: column; gap: 10px; }
+  .todo li { display: flex; gap: 12px; font-size: 14px; }
+  .todo li::before { content: "□"; color: var(--accent-soft); }
+  .todo li.done::before { content: "☑"; }
+  .todo li.done { color: var(--ink-soft); text-decoration: line-through; }
+
+  footer { margin-top: 80px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--ink-soft); }
+</style>
+
+<div class="wrap">
+  <p class="eyebrow">INSTAGRAM ｜ カルーセル投稿案</p>
+  <h1>あるがままのあなたでもっといける</h1>
+  <p class="lede">「変わらなきゃ」ではなく「今の自分のまま動く」。自己否定をスタート地点にしない、という一本の軸で8枚を構成しています。6枚目だけ、あつこさんの実体験に差し替えてください。</p>
+  <div class="meta">
+    <span>カルーセル 8枚</span>
+    <span>1080 × 1080px</span>
+    <span>投稿目安：平日 20:00〜22:00</span>
+    <span>ターゲット：がんばっているのに「まだ足りない」と感じている人</span>
+  </div>
+
+  <section>
+    <h2><span class="n">01</span>スライド構成</h2>
+    <p class="lede">左上から順に1枚目〜8枚目。各カードの下は、その枚が担う役割です。</p>
+
+    <div class="slides">
+      <div class="slide">
+        <div class="art">
+          <span class="pg">01 / 08</span>
+          <div class="spacer"></div>
+          <p class="big">あるがままの<br>あなたで<br>もっといける</p>
+          <div class="rule"></div>
+          <p class="small">「変わらなきゃ」と思った時点で、<br>少し疲れています</p>
+          <div class="spacer"></div>
+        </div>
+        <p class="note"><b>表紙</b>テーマを言い切る。サブコピーで「自分のことだ」と思わせる</p>
+      </div>
+
+      <div class="slide">
+        <div class="art">
+          <span class="pg">02 / 08</span>
+          <div class="spacer"></div>
+          <p class="mid">もっと自信がついたら。<br>もっと実績ができたら。<br>もっとちゃんとした<br>自分になれたら。</p>
+          <div class="rule"></div>
+          <p class="body">——その“もっと”、<br>いつまで続きますか。</p>
+          <div class="spacer"></div>
+        </div>
+        <p class="note"><b>共感</b>読み手の頭の中の言葉をそのまま置く</p>
+      </div>
+
+      <div class="slide">
+        <div class="art tint">
+          <span class="pg">03 / 08</span>
+          <div class="spacer"></div>
+          <p class="mid">準備が足りないんじゃない。</p>
+          <div class="rule"></div>
+          <p class="body">「今の自分ではダメ」<br>という前提が、<br>動きを止めています。</p>
+          <div class="spacer"></div>
+        </div>
+        <p class="note"><b>問題提起</b>原因を“能力”から“前提”にずらす</p>
+      </div>
+
+      <div class="slide">
+        <div class="art">
+          <span class="pg">04 / 08</span>
+          <div class="spacer"></div>
+          <p class="body">うまくいった人は、<br>別人になったわけじゃない。</p>
+          <div class="rule"></div>
+          <p class="mid"><em>今の自分のまま、<br>動いた人</em>です。</p>
+          <div class="spacer"></div>
+        </div>
+        <p class="note"><b>転換</b>この投稿の核。ここだけ強調色を使う</p>
+      </div>
+
+      <div class="slide">
+        <div class="art">
+          <span class="pg">05 / 08</span>
+          <span class="tag">たとえば</span>
+          <ul>
+            <li>完璧な言葉じゃなくていい<br>→ 伝わればいい</li>
+            <li>実績が少なくてもいい<br>→ 今できることを書けばいい</li>
+            <li>向いてないと思ってもいい<br>→ やってみないと分からない</li>
+          </ul>
+          <div class="spacer"></div>
+        </div>
+        <p class="note"><b>具体</b>抽象論で終わらせない。行動に落とす3つ</p>
+      </div>
+
+      <div class="slide">
+        <div class="art">
+          <span class="pg">06 / 08</span>
+          <span class="tag">差し替え枠</span>
+          <p class="body">わたしの場合は、</p>
+          <div class="card">初めての案件のとき、自分を名乗るのが怖かった。<br>でも、名乗らないと何も始まらなかった。<br><br>※ここをあつこさんの実体験に差し替えてください</div>
+          <div class="spacer"></div>
+        </div>
+        <p class="note"><b>体験</b>ここが本文で一番読まれる。実体験に置き換える</p>
+      </div>
+
+      <div class="slide">
+        <div class="art">
+          <span class="pg">07 / 08</span>
+          <div class="spacer"></div>
+          <p class="mid">削るんじゃなくて、活かす。<br>直すんじゃなくて、使う。</p>
+          <div class="rule"></div>
+          <p class="body">あるがままのあなたは、<br>もう素材が揃っています。</p>
+          <div class="spacer"></div>
+        </div>
+        <p class="note"><b>メッセージ</b>テーマを別の言葉で言い直して定着させる</p>
+      </div>
+
+      <div class="slide">
+        <div class="art invert">
+          <span class="pg">08 / 08</span>
+          <div class="spacer"></div>
+          <p class="big">自分を変えなくていい。<br>使い方を変えるだけ。</p>
+          <div class="spacer"></div>
+          <p class="small">保存して、迷った日に読み返してください</p>
+        </div>
+        <p class="note"><b>締め・保存導線</b>背景を反転。保存を促す一文を必ず入れる</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">02</span>キャプション</h2>
+    <p class="lede">2案とも使います。案1はフィード投稿に、案2はリールとストーリーズの再告知に。同じ内容でも入口を変えると、届く相手が増えます。</p>
+
+    <div class="cap">
+      <header>
+        <h3>案1・やわらかめ</h3>
+        <span class="use">フィード投稿（カルーセル）用</span>
+        <button class="copy" data-target="cap1">コピー</button>
+      </header>
+      <pre id="cap1">「あるがままのあなたでもっといける」
+
+もっと自信がついたら。
+もっと実績ができたら。
+もっとちゃんとした自分になれたら。
+
+そう思っているうちは、
+いつまでも“準備中”のままになってしまいます。
+
+前に進んでいる人は、
+別人に生まれ変わったわけではなくて、
+今の自分のまま、動きはじめた人でした。
+
+完璧な言葉じゃなくていい。
+実績が少なくてもいい。
+向いてないかも、と思ったままでもいい。
+
+自分を変えるんじゃなくて、
+今ある自分の使い方を変えるだけ。
+
+あなたはもう、素材が揃っています。
+
+迷った日に読み返せるように、保存しておいてください🕊️
+
+──
+あなたは今、何を「足りない」と感じていますか？
+よかったらコメントで教えてください。</pre>
+    </div>
+
+    <div class="cap">
+      <header>
+        <h3>案2・言い切り型</h3>
+        <span class="use">リール／ストーリーズ用</span>
+        <button class="copy" data-target="cap2">コピー</button>
+      </header>
+      <pre id="cap2">変わらなくていい。
+足りないんじゃなくて、使えていないだけ。
+
+「ちゃんとしてから」と思っているうちは、
+ずっと始まりません。
+
+うまくいく人は、
+今の自分のまま動いた人です。
+
+あるがままのあなたで、もっといけます。
+
+保存して、迷った日に読み返してください。</pre>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">03</span>リール台本（20〜30秒）</h2>
+    <p class="lede">カルーセルと同じ言葉を、順番だけ変えて流します。最初の3秒で手を止めてもらう構成です。</p>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>秒数</th><th>画面</th><th>テロップ</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>0—3秒</td><td>表紙</td><td>「変わらなきゃ」と思った時点で、疲れてます</td></tr>
+          <tr><td>3—8秒</td><td>テロップ</td><td>もっと自信がついたら。もっと実績ができたら。</td></tr>
+          <tr><td>8—13秒</td><td>テロップ</td><td>その“もっと”、いつまで続きますか</td></tr>
+          <tr><td>13—20秒</td><td>本文</td><td>うまくいった人は、別人になったわけじゃない。今の自分のまま動いた人</td></tr>
+          <tr><td>20—27秒</td><td>締め</td><td>自分を変えなくていい。使い方を変えるだけ</td></tr>
+          <tr><td>27—30秒</td><td>CTA</td><td>保存して、迷った日に読み返してください</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">04</span>ハッシュタグ（20個）</h2>
+    <p class="lede">テーマ系・働き方系・記録系を混ぜています。そのままコピーして使えます。</p>
+    <div class="tags">
+      <span>#あるがままの自分</span><span>#自己肯定感</span><span>#自分らしく生きる</span><span>#マインドセット</span><span>#言葉の力</span>
+      <span>#働き方</span><span>#働き方を考える</span><span>#副業</span><span>#副業初心者</span><span>#フリーランス</span>
+      <span>#フリーランス女子</span><span>#在宅ワーク</span><span>#自分軸</span><span>#頑張りすぎない</span><span>#心が軽くなる言葉</span>
+      <span>#手放す</span><span>#自分を大切にする</span><span>#一歩踏み出す</span><span>#今日の言葉</span><span>#ことばの記録</span>
+    </div>
+    <div class="cap">
+      <header>
+        <h3>コピー用</h3>
+        <button class="copy" data-target="tags">コピー</button>
+      </header>
+      <pre id="tags">#あるがままの自分 #自己肯定感 #自分らしく生きる #マインドセット #言葉の力
+#働き方 #働き方を考える #副業 #副業初心者 #フリーランス
+#フリーランス女子 #在宅ワーク #自分軸 #頑張りすぎない #心が軽くなる言葉
+#手放す #自分を大切にする #一歩踏み出す #今日の言葉 #ことばの記録</pre>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">05</span>デザイン指定</h2>
+    <p class="lede">ベージュ×テラコッタのような“よくある自己啓発投稿”の配色をあえて外し、白磁×深緑でまとめています。落ち着いていて、他のアカウントと並んだときに沈まない組み合わせです。</p>
+    <div class="spec">
+      <div class="swatch"><div class="chipcolor" style="background:#EEF1EC"></div><b>白磁</b><code>#EEF1EC</code><br><code>背景（1〜7枚目）</code></div>
+      <div class="swatch"><div class="chipcolor" style="background:#22271F"></div><b>墨</b><code>#22271F</code><br><code>見出し・本文</code></div>
+      <div class="swatch"><div class="chipcolor" style="background:#2F5D4A"></div><b>松葉</b><code>#2F5D4A</code><br><code>アクセント・8枚目の背景</code></div>
+      <div class="swatch"><div class="chipcolor" style="background:#7FA08C"></div><b>若竹</b><code>#7FA08C</code><br><code>補助テキスト・罫線</code></div>
+      <div class="swatch"><div class="chipcolor" style="background:#DDE4DA"></div><b>苔（淡）</b><code>#DDE4DA</code><br><code>3枚目の面の塗り分け</code></div>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <tbody>
+          <tr><th>見出し</th><td>Zen Old Mincho（明朝）／言葉が主役の枚は明朝で大きく</td></tr>
+          <tr><th>本文</th><td>Zen Kaku Gothic New（ゴシック）</td></tr>
+          <tr><th>ページ表記</th><td>Zen Kaku Gothic New・字間広め／右上に「01 / 08」</td></tr>
+          <tr><th>余白</th><td>上下左右に約90px。1枚の文字数は最小限に</td></tr>
+          <tr><th>フォント入手</th><td>Google Fonts（無料）。Canvaにも同名フォントあり</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">06</span>次のアクション</h2>
+    <ul class="todo">
+      <li>6枚目の実体験を、あつこさんの言葉に差し替える</li>
+      <li class="done">キャプションは2案とも採用（フィード／リール）</li>
+      <li>カルーセル8枚を作成（デザイン指定は05を参照）</li>
+      <li>平日20:00〜22:00に投稿、ハッシュタグを貼る</li>
+    </ul>
+  </section>
+
+  <footer>秘書室 ｜ company/secretary/ideas/instagram-arugamama-motto-ikeru.md と対になる制作用プレビューです。</footer>
+</div>
+
+<script>
+  document.querySelectorAll("button.copy").forEach(function (btn) {
+    btn.addEventListener("click", async function () {
+      var el = document.getElementById(btn.dataset.target);
+      var original = btn.textContent;
+      try {
+        await navigator.clipboard.writeText(el.textContent);
+        btn.textContent = "コピーしました";
+      } catch (e) {
+        var range = document.createRange();
+        range.selectNodeContents(el);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        btn.textContent = "選択しました。手動でコピーしてください";
+      }
+      setTimeout(function () { btn.textContent = original; }, 2600);
+    });
+  });
+</script>
