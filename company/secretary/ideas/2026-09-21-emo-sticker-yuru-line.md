@@ -366,3 +366,16 @@ Use flat solid fills only. Large areas of solid color, no muted or dusty tones, 
   上向きの弧（にっこり目）＋口も上向きの小さな弧。顔に下向きの線を一切入れない。
 - **線**: 均一な太さはAI生成に見える原因。
   外輪郭を太く／内部の描き込みを細く、輪郭にわずかな揺らぎを入れる（筆ペン風）。
+
+## キャラクター設定（4稿目レビューで確定・全プロンプト共通）
+3枚並べたところ、キャラが毎回別人になりシリーズに見えないことが判明。
+原因はキャラ設定を指定していなかったこと。以下を全プロンプトに固定で入れる。
+
+```
+CHARACTER (this exact same character must appear in every sticker of this series):
+A small simple person with a short black bob haircut and straight bangs covering the forehead, ears hidden by the hair. Round white face, no eyebrows, no nose. Eyes are simple closed smiling arcs curving upward. Mouth is a tiny upward curve. Wearing a plain deep blue (#3A6EA5) top.
+Draw the UPPER BODY ONLY — no legs, no feet, no full-body poses. Head is fairly large relative to the body.
+Keep the character's design, hairstyle, face and proportions exactly consistent across all stickers in the series.
+```
+- 併せて禁止: 全身像、短髪の男性に見える造形、キャラごとの描き分け。
+- 元データは**平面ベタのみ**。布・刺繍などのテクスチャが乗ったものは使わない。
