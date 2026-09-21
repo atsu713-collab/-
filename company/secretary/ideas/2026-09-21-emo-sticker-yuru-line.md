@@ -344,3 +344,9 @@ Color palette: strictly limited and high-contrast.
 - Die-cut border: pure white (#FFFFFF)
 Use flat solid fills only. Large areas of solid color, no muted or dusty tones, no pastels, no gradients, no textures.
 ```
+
+## 配色の面積ルール（初稿レビューで追加）
+- アクセント色（#FF6B35）は**小面積限定**。ベタ地と同系色（黄×橙）は色相が隣で明度も近いため、
+  大面積で使うと分離せず一つの塊に見え、サムネで絵が潰れる。
+- イラストの主要面は**白（#FFFFFF）**で抜く。黄地＋黒輪郭＋白面で明度差が最大になる。
+- 視覚的な主役は常に文字。イラストは面積40%以下、かつ最も強い色を持たせない。
