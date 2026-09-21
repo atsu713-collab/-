@@ -303,3 +303,44 @@ SNSを閉じたら、急に呼吸が楽になった。
 大丈夫って言ったのは、大丈夫じゃなかったからです。
 気づいてほしかった。
 #ステッカー #しんどい
+
+---
+
+# 【変更】配色をくすみ系から高コントラスト系に切替
+
+## 理由
+くすみカラー（オフホワイト×こげ茶）はサムネイルで沈む。
+SUZURI・Etsyは一覧のサムネで勝負が決まるので、色面のコントラストを優先する。
+※ただし彩度だけ上げると「元気」になり脱力ラインの温度と喧嘩する。
+　→ 上げるのは**彩度ではなくコントラスト**。文字は常に最濃色、色は1〜2色に限定。
+　→ 地をベタ色にする（白地にすると白いダイカットフチが消えて形が立たない）。
+
+## 確定パレット
+### パレット1「イエローベース」★推奨・褒め群（01〜05）
+- 地: #FFC93C（はっきりした黄）
+- 文字・線: #141414（墨黒）
+- アクセント: #FF6B35（オレンジ）
+- ダイカットフチ: #FFFFFF
+
+### パレット2「ネイビーベース」告白群（06〜08）
+- 地: #1B2A4A（濃紺）
+- 文字: #FFFFFF
+- アクセント: #E63946（赤）
+- ダイカットフチ: #FFFFFF
+
+### パレット3「ピンクベース」バズ担当（単発）
+- 地: #FF2E88
+- 文字・線: #141414
+- アクセント: #FFFFFF
+- ダイカットフチ: #FFFFFF
+※蛍光は通常印刷では再現されない。あくまで「蛍光風」の高彩度ピンク。
+
+## プロンプト差し替え用ブロック
+```
+Color palette: strictly limited and high-contrast.
+- Sticker base fill: vivid warm yellow (#FFC93C)
+- All outlines and text: near-black ink (#141414)
+- Single accent color: bold orange (#FF6B35)
+- Die-cut border: pure white (#FFFFFF)
+Use flat solid fills only. Large areas of solid color, no muted or dusty tones, no pastels, no gradients, no textures.
+```
